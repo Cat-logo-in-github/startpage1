@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalistic Startpage</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Helvetica:wght@700&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        .date-time {
+            font-family: 'Helvetica', sans-serif;
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 300px;
+            border: 2px solid #0078d7;
+            border-radius: 5px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .search-bar input:focus {
+            border-color: #005bb5;
+            box-shadow: 0 0 10px rgba(0, 120, 215, 0.5);
+        }
+        .search-bar button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #0078d7;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .search-bar button:hover {
+            background-color: #005bb5;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .buttons a {
+            padding: 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #0078d7;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .buttons a img {
+            width: 24px;
+            height: 24px;
+        }
+        .buttons a:hover {
+            animation: shake 0.5s;
+            animation-iteration-count: 1;
+        }
+        .buttons a:active {
+            transform: rotateY(180deg);
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="date-time" id="dateTime"></div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search..." id="searchInput">
+            <button onclick="search()">Search</button>
+        </div>
+        <div class="buttons">
+            <a href="https://mail.google.com" target="_blank"><img src="https://cdn.pixabay.com/photo/2017/06/06/00/33/email-2372130_1280.png" alt="Mail"></a>
+            <a href="https://calendar.google.com" target="_blank"><img src="https://cdn.pixabay.com/photo/2017/06/06/00/33/calendar-2372131_1280.png" alt="Calendar"></a>
+            <a href="https://docs.google.com/spreadsheets" target="_blank"><img src="https://cdn.pixabay.com/photo/2017/06/06/00/33/spreadsheet-2372132_1280.png" alt="Sheets"></a>
+            <a href="https://drive.google.com" target="_blank"><img src="https://cdn.pixabay.com/photo/2017/06/06/00/33/cloud-2372133_1280.png" alt="Drive"></a>
+            <!-- Add more buttons as needed -->
+            <a href="#" target="_blank"><img src="https://cdn.pixabay.com/photo/2017/06/06/00/33/plus-2372134_1280.png" alt="Plus"></a>
+            <a href="#" target="_blank"><img src="https://cdn.pixabay.com/photo/2017/06/06/00/33/plus-2372134_1280.png" alt="Plus"></a>
+            <a href="#" target="_blank"><img src="https://cdn.pixabay.com/photo/2017/06/06/00/33/plus-2372134_1280.png" alt="Plus"></a>
+            <a href="#" target="_blank"><img src="https://cdn.pixabay.com/photo/2017/06/06/00/33/plus-2372134_1280.png" alt="Plus"></a>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle search
+        function search() {
+            const query = document.getElementById('searchInput').value;
+            window.location.href = `https://www.google.com/search?q=${query}`;
+        }
+
+        // Function to display current date and time
+        function displayDateTime() {
+            const date = new Date();
+            document.getElementById('dateTime').innerText = date.toLocaleString();
+        }
+
+        // Initialize date and time
+        displayDateTime();
+        setInterval(displayDateTime, 1000); // Update every second
+    </script>
+</body>
+</html>
