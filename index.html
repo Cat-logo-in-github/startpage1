@@ -111,6 +111,7 @@
     </style>
 </head>
 <body>
+    <div id="top-area">
     <div class="container">
         <div class="date-time" id="dateTime"></div>
         <div class="search-bar">
@@ -134,7 +135,8 @@
         </div>
         <iframe width="1" height="1" wmode="transparent" src="https://www.youtube.com/embed/kPa7bsKwL-c?si=bvm5VkgRaFcezzyu" frameborder="0" allowfullscreen></iframe>
     </div>
-
+    </div>
+        
     <script>
         // Function to handle search
         function search() {
@@ -167,6 +169,19 @@ function getDailyQuote() {
 }
 
 document.getElementById('quote').innerText = getDailyQuote();
+
+var images = ['https://images.squarespace-cdn.com/content/v1/599a23abc534a5169a4a60b5/1686767561452-5S93HM26E4BTGK3Z8IB9/tailwind_31231246_0.JPG?format=300w', 'https://images.squarespace-cdn.com/content/v1/599a23abc534a5169a4a60b5/1686767909445-4N4UBRNXJ80UZZFFEBPA/tailwind_31332804_0.JPG?format=300w', 'https://images.squarespace-cdn.com/content/v1/599a23abc534a5169a4a60b5/1686767935037-XEN0JIF7KI2A3K10C045/tailwind_31349179_0.JPG?format=300w'],
+    index  = 0,
+    $top   = $('#top-area');
+
+setInterval(function() {
+   $top.animate({ opacity: 0 }, 500, function() {
+     $top.css('background-image', 'url('+images[++index]+')');
+     $top.animate({ opacity: 1 }, 500, function() {
+       if(index === images.length) index = 0;
+     });
+   });
+}, 6000);
 
     </script>
 </body>
